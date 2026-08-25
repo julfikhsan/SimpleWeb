@@ -5,7 +5,7 @@ from google import genai
 app = Flask(__name__)
 
 # Initialize the Gemini client (it automatically picks up GEMINI_API_KEY from environment variables)
-client = genai.Client()
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
 
 @app.route("/", methods=["GET", "POST"])
 def index():
