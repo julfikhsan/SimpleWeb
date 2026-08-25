@@ -3,6 +3,12 @@ from flask import Flask, render_template, request
 from google import genai
 
 app = Flask(__name__)
+app.config['DEBUG'] = True  # <-- Add this line to show errors on screen
+
+client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+
+@app.route("/", methods=["GET", "POST"])
+def index():
 
 # Initialize the Gemini client (it automatically picks up GEMINI_API_KEY from environment variables)
 client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
